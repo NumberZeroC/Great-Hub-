@@ -33,7 +33,6 @@ class DoubanSpider(scrapy.Spider):
         next_page = response.css('.next > a:nth-child(2)::attr(href)').extract_first()
         yield Request(url=parse.urljoin(response.url, next_page), callback=self.parse, dont_filter=True)
 
-
     def detail_parse(self,response):
         # 实例化ArticleItem
         article_item = ArticleItem()
